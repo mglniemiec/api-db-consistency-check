@@ -1,0 +1,7 @@
+# Ignore SQLite database files
+*.sqlite
+
+# Byte-compiled files
+__pycache__/
+*.pyc
+
