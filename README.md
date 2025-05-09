@@ -44,7 +44,6 @@ Defines a single `users` table with:
 
 Initialize the database with:
 
-```bash
 sqlite3 db/test_data.sqlite < sql/setup.sql
 
 ## How to Use
