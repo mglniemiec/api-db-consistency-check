@@ -9,7 +9,7 @@ A small QA project that checks whether data submitted to a mock API is correctly
 - [Overview](#overview)
 - [app.py (Mock API)](#apppy-mock-api)
 - [setup.sql (Database Schema)](#setupsql-database-schema)
-- [test_api_db.py (Pytest File)](#test-api-db)
+- [test_api_db.py (Pytest File)](#test-api-db-pytest-file)
 - [How to Use](#how-to-use)
 - [Requirements](#requirements)
 
