@@ -9,6 +9,7 @@ A small QA project that checks whether data submitted to a mock API is correctly
 - [Overview](#overview)
 - [app.py (Mock API)](#apppy-mock-api)
 - [setup.sql (Database Schema)](#setupsql-database-schema)
+- [test_api_db.py] (Pytest File) (#test-api-db)
 - [How to Use](#how-to-use)
 - [Requirements](#requirements)
 
@@ -46,28 +47,41 @@ Initialize the database with:
 
 sqlite3 db/test_data.sqlite < sql/setup.sql
 
+## test_api_db.py (Pytest File)
+
+This file contains automated tests to verify the end-to-end functionality of the mock API and its connection to the SQLite database.
+
+### Features
+
+- Uses [Pytest](https://docs.pytest.org/) for simple and readable test structure
+- Automatically starts with a clean database state before each test
+- Sends POST requests to the `/users` endpoint using Flask's test client
+- Verifies the response code and ensures the submitted data is actually written to the database
+
+### Current Tests
+
+- ✅ `test_create_user_success`: Checks that valid name/email submissions return `201 Created` and are inserted into the database
+- ✅ `test_missing_fields_returns_400`: Verifies the API returns `400 Bad Request` when required fields are missing
+- ✅ `test_duplicate_email_returns_409`: Ensures a `409 Conflict` is returned when attempting to insert a duplicate email
+
+These tests help ensure that the data flow between the API and database is reliable, making it easier to catch regressions and validate test environments automatically.
+
+
 ## How to Use
 
 1. Install dependencies
 pip install -r requirements.txt
 
-2. Initialize the SQLite database
+2.Initialize SQLite database 
 sqlite3 db/test_data.sqlite < sql/setup.sql
 
-3. Start the Flask server
+3.  Start the Flask App
 python3 app.py
 
-4. Send a POST request to test it
-curl -X POST http://127.0.0.1:5000/users \
-  -H "Content-Type: application/json" \
-  -d '{"name": "Max Mustermann", "email": "max@example.com"}'
+4. In another terminal window run:
+pytest
 
-5. Verify the data is in the database
-sqlite3 db/test_data.sqlite
-sqlite> SELECT * FROM users;
-
-To exit SQLite:
-.exit
+To stop Flask press CTRL + C
 
 
 ## Requirements
@@ -75,5 +89,6 @@ To exit SQLite:
 
 Python 3.x
 Flask
-SQLite (included with Python)
+requests
+pytest
 
