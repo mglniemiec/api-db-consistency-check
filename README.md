@@ -9,7 +9,7 @@ A small QA project that checks whether data submitted to a mock API is correctly
 - [Overview](#overview)
 - [app.py (Mock API)](#apppy-mock-api)
 - [setup.sql (Database Schema)](#setupsql-database-schema)
-- [test_api_db.py] (Pytest File) (#test-api-db)
+- [test_api_db.py (Pytest File)] (#test-api-db)
 - [How to Use](#how-to-use)
 - [Requirements](#requirements)
 
@@ -66,16 +66,15 @@ This file contains automated tests to verify the end-to-end functionality of the
 
 These tests help ensure that the data flow between the API and database is reliable, making it easier to catch regressions and validate test environments automatically.
 
-
 ## How to Use
 
 1. Install dependencies
 pip install -r requirements.txt
 
-2.Initialize SQLite database 
+2. Initialize SQLite database 
 sqlite3 db/test_data.sqlite < sql/setup.sql
 
-3.  Start the Flask App
+3. Start the Flask App
 python3 app.py
 
 4. In another terminal window run:
@@ -83,12 +82,9 @@ pytest
 
 To stop Flask press CTRL + C
 
-
 ## Requirements
-
 
 Python 3.x
 Flask
 requests
 pytest
-
